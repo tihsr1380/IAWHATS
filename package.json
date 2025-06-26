@@ -1,0 +1,13 @@
+{
+  "name": "wppconnect-server",
+  "version": "1.0.0",
+  "description": "Servidor básico para WPPConnect no Render",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@wppconnect-team/wppconnect": "^1.9.0",
+    "express": "^4.18.2"
+  }
+}
