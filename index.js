@@ -1,3 +1,32 @@
+
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+app.post('/api/:session/start-session', async (req, res) => {
+  const sessionName = req.params.session;
+  const token = req.headers.authorization;
+
+  if (!token || token !== 'Bearer meu-token-secreto') {
+    return res.status(401).json({ error: 'Token inválido ou ausente' });
+  }
+
+  // Simulação da criação da sessão e retorno de QR Code
+  return res.json({
+    session: sessionName,
+    qrcode: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...",
+    message: `Sessão ${sessionName} iniciada com sucesso!`
+  });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
+});
 const express = require('express');
 const { create } = require('@wppconnect-team/wppconnect');
 const app = express();
