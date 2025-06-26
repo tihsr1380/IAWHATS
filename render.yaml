@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: iawhats
+    env: node
+    buildCommand: |
+      npm install
+      npx puppeteer browsers install chrome
+    startCommand: node index.js
+    plan: free
